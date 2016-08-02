@@ -7,7 +7,11 @@ type Game struct {
 
 func(g* Game) roll(pins int) {
 	g.rolls[g.currentRoll] = pins
-	g.currentRoll += 1
+	if pins == 10 && g.currentRoll % 2 == 0 {
+		g.currentRoll += 2
+	} else {
+		g.currentRoll += 1
+	}
 }
 
 func(g* Game) score() int {
@@ -15,8 +19,10 @@ func(g* Game) score() int {
 	for frame := 0; frame < 10; frame++ {
 		roll := g.rolls[frame*2] + g.rolls[frame*2+1]
 		score += roll
-		if roll == 10 {
-			score +=  g.rolls[frame*2+2]
+		if g.rolls[frame*2] == 10 {
+			score +=  g.rolls[frame*2+2] + g.rolls[frame*2+3]
+		} else if roll == 10 {
+			score += g.rolls[frame*2+2]
 		}
 	}
 	return score

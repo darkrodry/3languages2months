@@ -44,3 +44,14 @@ func TestOneSpare(t *testing.T) {
 		t.Errorf("Game.score() for spare expect 16, got %d", game.score())
 	}
 }
+
+func TestOneStrike(t *testing.T) {
+	setUp()
+	game.roll(10)
+	game.roll(4)
+	game.roll(3)
+	rollMany(16, 0)
+	if game.score() != 24 {
+		t.Errorf("Game.score() for strike expect 24, got %d", game.score())
+	}
+}
