@@ -1,6 +1,6 @@
 package kata
 
-type GameImpl struct {}
+type Game struct {}
 
-func(g GameImpl) roll(pins int) {
+func(g Game) roll(pins int) {
 }
