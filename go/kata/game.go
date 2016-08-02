@@ -1,13 +1,19 @@
 package kata
 
 type Game struct {
-	points int
+	currentRoll int
+	rolls [21]int
 }
 
 func(g* Game) roll(pins int) {
-	g.points += pins
+	g.currentRoll += 1
+	g.rolls[g.currentRoll] = pins
 }
 
 func(g* Game) score() int {
-	return g.points
+	score := 0
+	for _, pins := range g.rolls {
+		score += pins
+	}
+	return score
 }
