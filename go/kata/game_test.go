@@ -29,3 +29,14 @@ func TestAllOnes(t *testing.T) {
 		t.Errorf("Game.score() for all 1 pins rolls expect 20, got %d", game.score())
 	}
 }
+
+func TestOneSpare(t *testing.T) {
+	setUp()
+	game.roll(5)
+	game.roll(5)
+	game.roll(3)
+	rollMany(17, 0)
+	if game.score() != 16 {
+		t.Errorf("Game.score() for spare expect 16, got %d", game.score())
+	}
+}
