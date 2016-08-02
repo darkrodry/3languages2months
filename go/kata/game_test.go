@@ -14,6 +14,11 @@ func rollMany(n, pins int) {
 	}
 }
 
+func rollSpare() {
+	game.roll(5)
+	game.roll(5)
+}
+
 func TestGutterGame(t *testing.T) {
 	setUp()
 	rollMany(20, 0)
@@ -32,8 +37,7 @@ func TestAllOnes(t *testing.T) {
 
 func TestOneSpare(t *testing.T) {
 	setUp()
-	game.roll(5)
-	game.roll(5)
+	rollSpare()
 	game.roll(3)
 	rollMany(17, 0)
 	if game.score() != 16 {
