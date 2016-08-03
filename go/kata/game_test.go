@@ -53,3 +53,9 @@ func TestOneStrike(t *testing.T) {
 	rollMany(16, 0)
 	assertScore(24, game.score(), t)
 }
+
+func TestPerfectGame(t *testing.T) {
+	setUp()
+	rollMany(12, 10)
+	assertScore(300, game.score(), t)
+}
