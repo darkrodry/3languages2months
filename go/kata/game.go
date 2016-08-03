@@ -19,11 +19,20 @@ func(g* Game) score() int {
 	for frame := 0; frame < 10; frame++ {
 		roll := g.rolls[frame*2] + g.rolls[frame*2+1]
 		score += roll
-		if g.rolls[frame*2] == 10 {
+		if isStrike(g, frame) {
 			score +=  g.rolls[frame*2+2] + g.rolls[frame*2+3]
-		} else if roll == 10 {
+		} else if isSpare(g, frame) {
 			score += g.rolls[frame*2+2]
 		}
 	}
 	return score
+}
+
+func isStrike(g* Game, frame int)  bool {
+	return g.rolls[frame*2] == 10
+}
+
+func isSpare(g* Game, frame int) bool {
+	return g.rolls[frame*2] + g.rolls[frame*2] == 10 &&
+		g.rolls[frame*2] != 10
 }
