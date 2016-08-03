@@ -19,20 +19,22 @@ func rollSpare() {
 	game.roll(5)
 }
 
+func assertScore(expected, score int, t *testing.T) {
+	if score != expected {
+		t.Errorf("Game.score() expected %d, got %d", expected, score)
+	}
+}
+
 func TestGutterGame(t *testing.T) {
 	setUp()
 	rollMany(20, 0)
-	if game.score() != 0 {
-		t.Errorf("Game.score() for a 0 pins game expect 0, got %d", game.score()) 
-	}
+	assertScore(0, game.score(), t)
 }
 
 func TestAllOnes(t *testing.T) {
 	setUp()
 	rollMany(20, 1)
-	if game.score() != 20 {
-		t.Errorf("Game.score() for all 1 pins rolls expect 20, got %d", game.score())
-	}
+	assertScore(20, game.score(), t)
 }
 
 func TestOneSpare(t *testing.T) {
@@ -40,9 +42,7 @@ func TestOneSpare(t *testing.T) {
 	rollSpare()
 	game.roll(3)
 	rollMany(17, 0)
-	if game.score() != 16 {
-		t.Errorf("Game.score() for spare expect 16, got %d", game.score())
-	}
+	assertScore(16, game.score(), t)
 }
 
 func TestOneStrike(t *testing.T) {
@@ -51,7 +51,5 @@ func TestOneStrike(t *testing.T) {
 	game.roll(4)
 	game.roll(3)
 	rollMany(16, 0)
-	if game.score() != 24 {
-		t.Errorf("Game.score() for strike expect 24, got %d", game.score())
-	}
+	assertScore(24, game.score(), t)
 }
