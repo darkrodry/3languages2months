@@ -15,7 +15,11 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
-  if a == b && b == c
+  if (a + b) <= c || (a + c) <= b || (b + c) <= a
+    raise TriangleError, "Every two side of a triangle should add more than the third side"
+  elsif a <= 0 || b <= 0 || c <= 0
+    raise TriangleError, "Every triangle side should be greater than 0"
+  elsif a == b && b == c
     :equilateral
   elsif a == b || b == c || c == a
     :isosceles
