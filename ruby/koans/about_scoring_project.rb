@@ -31,6 +31,16 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score(dice)
   # You need to write this method
+  score = 0
+  score += dice.count(1) / 3 * 1000
+  score += dice.count(1) % 3 * 100
+  score += dice.count(2) / 3 * 200
+  score += dice.count(3) / 3 * 300
+  score += dice.count(4) / 3 * 400
+  score += dice.count(5) / 3 * 500
+  score += dice.count(5) % 3 * 50
+  score += dice.count(6) / 3 * 600
+  return score
 end
 
 class AboutScoringProject < Neo::Koan
