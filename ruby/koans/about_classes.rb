@@ -169,7 +169,7 @@ class AboutClasses < Neo::Koan
 
   def test_to_s_is_used_in_string_interpolation
     fido = Dog7.new("Fido")
-    assert_equal __, "My dog is #{fido}"
+    assert_equal "My dog is Fido", "My dog is #{fido}"
   end
 
   def test_inspect_provides_a_more_complete_string_version
