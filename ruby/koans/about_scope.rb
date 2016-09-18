@@ -47,7 +47,7 @@ class AboutScope < Neo::Koan
   end
 
   def test_use_the_prefix_scope_operator_to_force_the_global_scope
-    assert_equal __, ::String == "HI".class
+    assert_equal true, ::String == "HI".class
   end
 
   # ------------------------------------------------------------------
