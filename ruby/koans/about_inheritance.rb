@@ -28,7 +28,7 @@ class AboutInheritance < Neo::Koan
   end
 
   def test_all_classes_ultimately_inherit_from_object
-    assert_equal __, Chihuahua.ancestors.include?(Object)
+    assert_equal true, Chihuahua.ancestors.include?(Object)
   end
 
   def test_subclasses_inherit_behavior_from_parent_class
