@@ -43,4 +43,10 @@ class GameTest < Test::Unit::TestCase
     assert_equal 24, @game.score
   end
 
+  def test_perfect_game
+    setup
+    roll_many(12, 10)
+    assert_equal 300, @game.score
+  end
+
 end
