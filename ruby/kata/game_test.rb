@@ -24,4 +24,13 @@ class GameTest < Test::Unit::TestCase
     roll_many(20, 1)
     assert_equal 20, @game.score
   end
+
+  def test_one_spare
+    setup
+    @game.roll(5)
+    @game.roll(5)
+    @game.roll(3)
+    roll_many(17, 0)
+    assert_equal 16, @game.score
+  end
 end
