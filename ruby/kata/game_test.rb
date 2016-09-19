@@ -33,4 +33,14 @@ class GameTest < Test::Unit::TestCase
     roll_many(17, 0)
     assert_equal 16, @game.score
   end
+  
+  def test_one_strike
+    setup
+    @game.roll(10)
+    @game.roll(3)
+    @game.roll(4)
+    roll_many(16, 0)
+    assert_equal 24, @game.score
+  end
+
 end
