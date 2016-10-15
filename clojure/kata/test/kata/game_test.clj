@@ -17,3 +17,7 @@
 (deftest test-one-strike
 	(is (= 24 (get-score (concat [10 3 4] (repeat 16 0)))))
 )
+
+(deftest test-perfect-game
+	(is (= 300 (get-score (repeat 12 10))))
+)
